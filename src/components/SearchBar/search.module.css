@@ -1,0 +1,13 @@
+input {
+  flex: 1;
+  height: 29px;
+  border: none;
+  padding: 6px;
+  outline: none;
+}
+
+.searchIcon {
+  background-color: #0097b2;
+  border: none;
+  cursor: pointer;
+}

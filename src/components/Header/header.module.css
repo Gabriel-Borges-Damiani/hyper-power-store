@@ -1,0 +1,98 @@
+.header {
+  background-color: black;
+  color: #0097b2;
+  width: 100vw;
+  height: 170px;
+  padding: 20px;
+  display: grid;
+  grid-template-areas:
+    "logo icons"
+    "middle middle"
+    "bottom bottom";
+
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+
+  align-items: center;
+  gap: 13px;
+}
+
+.topLogo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: logo;
+}
+
+.middle {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 2px solid #0097b2;
+  overflow: hidden;
+  grid-area: middle;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-area: bottom;
+}
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  grid-area: icons;
+  justify-self: end;
+}
+
+.cepButton {
+  color: #fff;
+  flex: 1;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .cepButton {
+    font-size: 15px;
+  }
+
+  .header {
+    padding: 20px 50px;
+    height: 140px;
+    grid-template-areas: "logo bottom middle icons";
+
+    grid-template-columns:
+      auto /* logo */
+      auto /* cep */
+      1fr /* pesquisa */
+      auto; /* ícones */
+
+    align-items: center;
+  }
+
+  .middle {
+    max-width: 470px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 20px 100px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .header {
+    padding: 20px 600px;
+  }
+}
