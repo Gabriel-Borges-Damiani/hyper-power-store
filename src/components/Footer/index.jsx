@@ -22,7 +22,7 @@ export const Footer = () => {
         </div>
         <div>
           <h4>Siga-nos</h4>
-          <div>
+          <div className={styles.socialIcons}>
             <InstagramIcon></InstagramIcon>
             <TwitterIcon></TwitterIcon>
             <FacebookIcon></FacebookIcon>

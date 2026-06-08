@@ -44,7 +44,7 @@ p {
 .socialIcons {
   height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
 }
 
