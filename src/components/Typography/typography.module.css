@@ -1,0 +1,12 @@
+.h4 {
+  color: var(--typography-color);
+}
+
+.body {
+  color: var(--typography-color);
+}
+
+.bold {
+  font-weight: 700;
+  color: var(--typography-color);
+}
