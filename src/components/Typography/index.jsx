@@ -15,7 +15,7 @@ const Typography = ({
   const getStyle = () => {
     const style = {};
 
-    const colorValue = color ? `var(${color})` : "var(--light-gray)";
+    const colorValue = color ? `var(${color})` : "#fff";
     style["--typography-color"] = colorValue;
 
     return style;
