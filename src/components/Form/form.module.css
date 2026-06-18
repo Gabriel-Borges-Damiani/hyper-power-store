@@ -1,0 +1,13 @@
+form {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (min-width: 620px) {
+  form {
+    margin-top: 45px;
+    gap: 15px;
+  }
+}

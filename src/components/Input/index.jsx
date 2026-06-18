@@ -1,5 +1,12 @@
 import styles from "./input.module.css";
 
-export const Input = ({ type, ...rest }) => {
-  return <input className={styles.input} type={type} {...rest} />;
+export const Input = ({ type, register, registerName, ...rest }) => {
+  return (
+    <input
+      className={styles.inputForm}
+      {...register(registerName)}
+      type={type}
+      {...rest}
+    />
+  );
 };

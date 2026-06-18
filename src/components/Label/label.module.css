@@ -1,0 +1,11 @@
+label {
+  font-size: 11px;
+  color: var(--secundary-color);
+  font-weight: bold;
+}
+
+@media (min-width: 620px) {
+  label {
+    font-size: 17px;
+  }
+}

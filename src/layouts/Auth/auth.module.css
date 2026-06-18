@@ -1,5 +1,5 @@
 .body {
-  background-color: black;
+  background-color: #274c57;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -7,13 +7,17 @@
 }
 
 .formContainer {
-  background-color: #0097b2;
+  background-color: var(--tertiary-color);
   border-radius: 20px;
   width: 80%;
-  max-width: 650px;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 25px;
+  max-width: 550px;
+  aspect-ratio: 1 / 1.6;
+  padding: 25px 20px;
+}
+
+@media (min-width: 620px) {
+  .formContainer {
+    padding: 50px 40px;
+    aspect-ratio: 1 / 1.3;
+  }
 }
