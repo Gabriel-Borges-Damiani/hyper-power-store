@@ -1,10 +1,10 @@
 import styles from "./divider.module.css";
 
-export const DividerLine = ({ text }) => {
+export const DividerLine = ({ children }) => {
   return (
     <div className={styles.container}>
       <hr />
-      <span>{text}</span>
+      <span>{children}</span>
       <hr />
     </div>
   );

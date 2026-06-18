@@ -1,9 +1,9 @@
 import styles from "./user.icon.module.css";
 
-export const UserIcon = () => {
+export const UserIcon = ({ className }) => {
   return (
     <svg
-      className={styles.svgUser}
+      className={className ? className : styles.svgUser}
       width="20px"
       height="20px"
       viewBox="0 0 16 16"

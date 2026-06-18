@@ -1,0 +1,29 @@
+.btn {
+  background-color: #0097b2;
+  color: #fff;
+  border: none;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.altBtn {
+  background-color: #fff;
+  border: none;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 620px) {
+  .btn {
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .altBtn {
+    height: 40px;
+  }
+}

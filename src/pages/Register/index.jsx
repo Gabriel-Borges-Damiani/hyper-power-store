@@ -5,7 +5,11 @@ import { Input } from "../../components/Input";
 import Typography from "../../components/Typography";
 import { useForm } from "react-hook-form";
 
+import googleImg from "./google.png";
 import styles from "./register.module.css";
+import { Button } from "../../components/Button";
+import { DividerLine } from "../../components/DividerLine";
+import { UserIcon } from "../../components/UserIcon";
 
 export const Register = () => {
   const { register } = useForm();
@@ -25,7 +29,7 @@ export const Register = () => {
           registerName="name"
           type="text"
           id="name"
-          placeHolder="Insira seu nome completo"
+          placeholder="Insira seu nome completo"
           required
         ></Input>
         <Label htmlFor="email">Email</Label>
@@ -34,7 +38,7 @@ export const Register = () => {
           registerName="email"
           type="text"
           id="email"
-          placeHolder="Insira seu email"
+          placeholder="Insira seu email"
           required
         ></Input>
         <Label htmlFor="password">Senha</Label>
@@ -43,9 +47,22 @@ export const Register = () => {
           registerName="password"
           type="text"
           id="password"
-          placeHolder="Insira sua senha"
+          placeholder="Insira sua senha"
           required
         ></Input>
+        <Button className={styles.registerBtn} type="submit">
+          Submeter
+        </Button>
+        <DividerLine>ou</DividerLine>
+        <div className={styles.altOptions}>
+          <Button altBtn={true} className={styles.googleBtn} href="#">
+            <img src={googleImg} alt="Google Image"></img>
+          </Button>
+          <button className={styles.loginArea}>
+            <Typography variant="body">Faça seu Login</Typography>
+            <UserIcon className={styles.loginIcon}></UserIcon>
+          </button>
+        </div>
       </Form>
     </AuthContainer>
   );

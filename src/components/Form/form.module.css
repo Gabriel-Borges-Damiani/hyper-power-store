@@ -7,7 +7,7 @@ form {
 
 @media (min-width: 620px) {
   form {
-    margin-top: 45px;
-    gap: 15px;
+    margin-top: 35px;
+    gap: 12px;
   }
 }
