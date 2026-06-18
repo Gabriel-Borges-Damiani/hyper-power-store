@@ -1,0 +1,44 @@
+.textCenter {
+  text-align: center;
+}
+
+.loginBtn {
+  margin-top: 17px;
+}
+
+.googleBtn {
+  margin-top: 17px;
+}
+
+.altOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.registerArea {
+  cursor: pointer;
+  border: none;
+  margin-top: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.registerIcon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (min-width: 768px) {
+  .registerArea {
+    gap: 8px;
+  }
+
+  .registerIcon {
+    width: 17px;
+    height: 17px;
+  }
+}
