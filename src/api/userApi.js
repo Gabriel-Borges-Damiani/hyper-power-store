@@ -6,14 +6,28 @@ const http = axios.create({
 
 export const registerUserDB = async (newUser) => {
   await http.post("/users", {
-    newUser,
+    ...newUser,
     favoritos: [],
     carrinho: [],
     categoriasRecentes: [],
   });
 };
 
-export const loginUser = async () => {};
+export const getAllUsers = async () => {
+  const response = await http.get("/users");
+  return response.data;
+};
+
+export const getUserByEmail = async (email) => {
+  const response = await http.get(`/users?email=${email}`);
+  return response.data.length > 0 ? response.data[0] : null;
+};
+
+export const getUserById = async (id) => {
+  const response = await http.get(`/users/${id}`);
+  return response.data;
+};
+
 export const logoutUser = async () => {};
 export const deleteUser = async () => {};
 

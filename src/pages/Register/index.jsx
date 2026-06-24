@@ -20,8 +20,8 @@ export const Register = () => {
   const [emailError, setEmailError] = useState("");
 
   const handleOnSubmit = async (data) => {
-    const response = registerUser(data);
-    if (response.succes) {
+    const response = await registerUser(data);
+    if (response.success) {
       const newUser = response.user;
       await registerUserDB(newUser);
       setEmailError("");

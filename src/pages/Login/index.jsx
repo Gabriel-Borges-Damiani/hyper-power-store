@@ -24,8 +24,8 @@ export const Login = () => {
     setEmailError("");
     setPasswordError("");
 
-    const response = loginUser(data);
-    if (!response.sucess) {
+    const response = await loginUser(data);
+    if (!response.success) {
       if (response.field === "password") {
         setPasswordError(response.error);
       } else {
