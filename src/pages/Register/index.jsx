@@ -10,9 +10,26 @@ import styles from "./register.module.css";
 import { Button } from "../../components/Button";
 import { DividerLine } from "../../components/DividerLine";
 import { UserIcon } from "../../components/UserIcon";
+import { useAuth } from "../../hooks/useAuth";
+import { registerUserDB } from "../../api/userApi";
+import { useState } from "react";
 
 export const Register = () => {
-  const { register } = useForm();
+  const { register, handleSubmit } = useForm();
+  const { registerUser } = useAuth();
+  const [emailError, setEmailError] = useState("");
+
+  const handleOnSubmit = async (data) => {
+    const response = registerUser(data);
+    if (response.succes) {
+      const newUser = response.user;
+      await registerUserDB(newUser);
+      setEmailError("");
+    } else {
+      console.error(response.error);
+      setEmailError(response.error);
+    }
+  };
 
   return (
     <AuthContainer>
@@ -22,7 +39,7 @@ export const Register = () => {
       <Typography variant="body" className={styles.textCenter}>
         Bem vindo! Crie uma nova conta.
       </Typography>
-      <Form>
+      <Form handleOnSubmit={handleOnSubmit} handleSubmit={handleSubmit}>
         <Label htmlFor="name">Nome</Label>
         <Input
           register={register}
@@ -40,6 +57,7 @@ export const Register = () => {
           id="email"
           placeholder="Insira seu email"
           required
+          error={emailError}
         ></Input>
         <Label htmlFor="password">Senha</Label>
         <Input

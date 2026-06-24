@@ -1,12 +1,15 @@
 import styles from "./input.module.css";
 
-export const Input = ({ type, register, registerName, ...rest }) => {
+export const Input = ({ error, type, register, registerName, ...rest }) => {
   return (
-    <input
-      className={styles.inputForm}
-      {...register(registerName)}
-      type={type}
-      {...rest}
-    />
+    <>
+      <input
+        className={`${styles.inputForm} ${error ? styles.error : ""}`}
+        {...register(registerName)}
+        type={type}
+        {...rest}
+      />
+      {error && <span className={styles.errorMsg}>{error}</span>}
+    </>
   );
 };

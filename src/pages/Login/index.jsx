@@ -10,9 +10,29 @@ import googleImg from "./google.png";
 import { Button } from "../../components/Button";
 import { DividerLine } from "../../components/DividerLine";
 import { UserIcon } from "../../components/UserIcon";
+import { useAuth } from "../../hooks/useAuth";
+import { useState } from "react";
 
 export const Login = () => {
-  const { register } = useForm();
+  const { register: registerLogin, handleSubmit: handleSubmitLogin } =
+    useForm();
+  const { loginUser } = useAuth();
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handleOnSubmit = async (data) => {
+    setEmailError("");
+    setPasswordError("");
+
+    const response = loginUser(data);
+    if (!response.sucess) {
+      if (response.field === "password") {
+        setPasswordError(response.error);
+      } else {
+        setEmailError(response.error);
+      }
+    }
+  };
 
   return (
     <AuthContainer>
@@ -22,24 +42,26 @@ export const Login = () => {
       <Typography variant="body" className={styles.textCenter}>
         Bem vindo! Que bom ter você de volta!
       </Typography>
-      <Form>
+      <Form handleOnSubmit={handleOnSubmit} handleSubmit={handleSubmitLogin}>
         <Label htmlFor="email">Email</Label>
         <Input
-          register={register}
+          register={registerLogin}
           registerName="email"
           type="text"
           id="email"
           placeholder="Insira seu email"
           required
+          error={emailError}
         ></Input>
         <Label htmlFor="password">Senha</Label>
         <Input
-          register={register}
+          register={registerLogin}
           registerName="password"
           type="text"
           id="password"
           placeholder="Insira sua senha"
           required
+          error={passwordError}
         ></Input>
         <Button className={styles.loginBtn} type="submit">
           Submeter

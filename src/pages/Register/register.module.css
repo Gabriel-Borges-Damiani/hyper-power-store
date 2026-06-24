@@ -3,11 +3,11 @@
 }
 
 .registerBtn {
-  margin-top: 17px;
+  margin-top: 7px;
 }
 
 .googleBtn {
-  margin-top: 17px;
+  margin-top: 7px;
 }
 
 .altOptions {
@@ -20,7 +20,7 @@
 .loginArea {
   cursor: pointer;
   border: none;
-  margin-top: 17px;
+  margin-top: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
