@@ -6,6 +6,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.btn:active,
+.altBtn:active {
+  transform: scale(0.95);
 }
 
 .altBtn {
@@ -15,6 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s ease;
 }
 
 @media (min-width: 620px) {
