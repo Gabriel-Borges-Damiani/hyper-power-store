@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import googleImg from "./google.png";
 import { Button } from "../../components/Button";
 import { DividerLine } from "../../components/DividerLine";
-import { UserIcon } from "../../components/UserIcon";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -74,7 +73,6 @@ export const Login = () => {
           </Button>
           <Link className={styles.registerArea} to="/auth/register">
             <Typography variant="body">Cadastre-se</Typography>
-            <UserIcon className={styles.registerIcon}></UserIcon>
           </Link>
         </div>
       </Form>

@@ -10,7 +10,6 @@ import googleImg from "./google.png";
 import styles from "./register.module.css";
 import { Button } from "../../components/Button";
 import { DividerLine } from "../../components/DividerLine";
-import { UserIcon } from "../../components/UserIcon";
 import { useAuth } from "../../hooks/useAuth";
 import { registerUserDB } from "../../api/userApi";
 import { useState } from "react";
@@ -81,7 +80,6 @@ export const Register = () => {
           </Button>
           <Link className={styles.loginArea} to="/auth/login">
             <Typography variant="body">Faça seu Login</Typography>
-            <UserIcon className={styles.loginIcon}></UserIcon>
           </Link>
         </div>
       </Form>
