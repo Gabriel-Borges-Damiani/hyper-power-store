@@ -25,6 +25,12 @@
   grid-area: logo;
 }
 
+.topIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
 .middle {
   background-color: #fff;
   display: flex;
@@ -93,6 +99,10 @@
 
 @media (min-width: 2000px) {
   .header {
-    padding: 20px 600px;
+    padding: 20px 500px;
+  }
+
+  .topIcons {
+    gap: 25px;
   }
 }

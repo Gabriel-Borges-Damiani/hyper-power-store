@@ -3,7 +3,6 @@ import logo from "../../assets/logo-hyper-powerr.png";
 import { HearthIcon } from "../HearthIcon/index.jsx";
 import { CarIcon } from "../CarIcon/index.jsx";
 import { UserIcon } from "../UserIcon/index.jsx";
-import { MenuIcon } from "../MenuIcon/index.jsx";
 import { SearchBar } from "../SearchBar/index.jsx";
 import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
@@ -16,7 +15,6 @@ export const Header = () => {
         <HearthIcon></HearthIcon>
         <CarIcon></CarIcon>
         <UserIcon></UserIcon>
-        <MenuIcon></MenuIcon>
       </div>
       <div className={styles.middle}>
         <SearchBar></SearchBar>

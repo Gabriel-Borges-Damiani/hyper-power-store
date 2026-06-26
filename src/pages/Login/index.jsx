@@ -12,6 +12,7 @@ import { DividerLine } from "../../components/DividerLine";
 import { UserIcon } from "../../components/UserIcon";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const { register: registerLogin, handleSubmit: handleSubmitLogin } =
@@ -71,10 +72,10 @@ export const Login = () => {
           <Button altBtn={true} className={styles.googleBtn} href="#">
             <img src={googleImg} alt="Google Image"></img>
           </Button>
-          <button className={styles.registerArea}>
+          <Link className={styles.registerArea} to="/auth/register">
             <Typography variant="body">Cadastre-se</Typography>
             <UserIcon className={styles.registerIcon}></UserIcon>
-          </button>
+          </Link>
         </div>
       </Form>
     </AuthContainer>

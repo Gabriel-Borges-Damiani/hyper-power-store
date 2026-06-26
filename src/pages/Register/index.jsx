@@ -4,6 +4,7 @@ import { Label } from "../../components/Label";
 import { Input } from "../../components/Input";
 import Typography from "../../components/Typography";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 import googleImg from "./google.png";
 import styles from "./register.module.css";
@@ -18,6 +19,7 @@ export const Register = () => {
   const { register, handleSubmit } = useForm();
   const { registerUser } = useAuth();
   const [emailError, setEmailError] = useState("");
+  const navigate = useNavigate();
 
   const handleOnSubmit = async (data) => {
     const response = await registerUser(data);
@@ -25,6 +27,7 @@ export const Register = () => {
       const newUser = response.user;
       await registerUserDB(newUser);
       setEmailError("");
+      navigate("/");
     } else {
       console.error(response.error);
       setEmailError(response.error);
@@ -76,10 +79,10 @@ export const Register = () => {
           <Button altBtn={true} className={styles.googleBtn} href="#">
             <img src={googleImg} alt="Google Image"></img>
           </Button>
-          <button className={styles.loginArea}>
+          <Link className={styles.loginArea} to="/auth/login">
             <Typography variant="body">Faça seu Login</Typography>
             <UserIcon className={styles.loginIcon}></UserIcon>
-          </button>
+          </Link>
         </div>
       </Form>
     </AuthContainer>
