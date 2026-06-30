@@ -3,7 +3,8 @@
   color: #0097b2;
   width: 100vw;
   height: 170px;
-  padding: 20px;
+  padding-inline: var(--page-padding);
+  padding-block: 20px;
   display: grid;
   grid-template-areas:
     "logo icons"
@@ -73,7 +74,6 @@
   }
 
   .header {
-    padding: 20px 50px;
     height: 140px;
     grid-template-areas: "logo bottom middle icons";
 
@@ -91,17 +91,7 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .header {
-    padding: 20px 100px;
-  }
-}
-
 @media (min-width: 2000px) {
-  .header {
-    padding: 20px 500px;
-  }
-
   .topIcons {
     gap: 25px;
   }
