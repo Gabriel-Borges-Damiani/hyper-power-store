@@ -6,6 +6,22 @@
   background-size: cover;
 }
 
+.favoritesSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-inline: var(--page-padding-margin);
+  gap: 5vw;
+  margin: 7vh;
+}
+
+.productsSection {
+  background-color: #fff;
+  padding: var(--page-padding-margin);
+  margin-inline: var(--page-padding-margin);
+  margin-block: 9vh;
+}
+
 @media (min-width: 768px) {
   .hero {
     height: 410px;

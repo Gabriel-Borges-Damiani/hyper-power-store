@@ -5,7 +5,7 @@ import { Register } from "../pages/Register";
 import { Login } from "../pages/Login";
 import { Menu } from "../pages/Menu";
 import { Products } from "../pages/Products";
-import { Category } from "../pages/Category";
+import { CategoryPage } from "../pages/CategoryPage";
 
 export const AppRouter = () => {
   return (
@@ -13,8 +13,8 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="menu" element={<Menu />}></Route>
-          <Route path="products" element={<Products />}></Route>
-          <Route path="category" element={<Category />}></Route>
+          <Route path="product/:id" element={<Products />}></Route>
+          <Route path="category/:category" element={<CategoryPage />}></Route>
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="register" element={<Register />}></Route>

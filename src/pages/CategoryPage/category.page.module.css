@@ -1,0 +1,5 @@
+.container {
+  padding-inline: var(--page-padding-margin);
+  margin-top: clamp(20px, 6vh, 100px);
+  margin-bottom: clamp(20px, 6vh, 100px);
+}

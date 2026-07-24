@@ -3,24 +3,31 @@
   --secundary-color: #0097b2;
   --tertiary-color: black;
   --quaternary-color: #454f5eef;
+  --quinary-color: #f0f0f0;
 
-  --page-padding: 20px;
+  --btn-cart-bg: #e3f2fd;
+  --btn-cart-text: #1e88e5;
+  --btn-buy-bg: #3483fa;
+
+  --price-color: #0077b6;
+
+  --page-padding-margin: 20px;
 }
 @media (min-width: 728px) {
   :root {
-    --page-padding: 50px;
+    --page-padding-margin: 50px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --page-padding: 100px;
+    --page-padding-margin: 100px;
   }
 }
 
 @media (min-width: 2000px) {
   :root {
-    --page-padding: 500px;
+    --page-padding-margin: 350px;
   }
 }
 

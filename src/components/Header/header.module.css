@@ -3,7 +3,7 @@
   color: #0097b2;
   width: 100vw;
   height: 170px;
-  padding-inline: var(--page-padding);
+  padding-inline: var(--page-padding-margin);
   padding-block: 20px;
   display: grid;
   grid-template-areas:
