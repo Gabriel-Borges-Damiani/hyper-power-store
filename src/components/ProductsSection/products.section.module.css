@@ -5,11 +5,12 @@
 
   margin-inline: var(--page-padding-margin);
 
-  margin-block: 9vh;
+  margin-top: clamp(24px, 5vh, 60px);
+  margin-bottom: clamp(24px, 5vh, 60px);
 }
 
 .productsSection h3 {
-  margin-bottom: clamp(24px, 5vh, 60px);
+  margin-bottom: clamp(24px, 5vh, 40px);
 }
 
 .productsList {

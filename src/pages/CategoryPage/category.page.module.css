@@ -3,3 +3,21 @@
   margin-top: clamp(20px, 6vh, 100px);
   margin-bottom: clamp(20px, 6vh, 100px);
 }
+
+.categoryHeader {
+  max-width: 1400px;
+
+  margin: 40px 0;
+
+  padding-inline: var(--page-padding-margin);
+}
+
+.categoryTitle {
+  margin: 0;
+
+  text-align: left;
+}
+
+.productsCount {
+  margin-top: 8px;
+}

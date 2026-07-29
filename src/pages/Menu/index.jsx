@@ -68,7 +68,7 @@ export const Menu = () => {
           src={accessoriesImg}
           alt="Vários acessórios para smartphone organizados em uma vitrine tecnológica, incluindo capa protetora, carregador sem fio, suporte veicular, fones de ouvido sem fio, headphone, carregador de tomada, power bank e cabos USB, representando praticidade, conectividade e proteção para o dia a dia."
           text="Acessórios"
-          onClick={() => navigate("/category/mobile-acessories")}
+          onClick={() => navigate("/category/mobile-accessories")}
         ></CategoryCircle>
       </div>
       {productsSections.map((p) => {
