@@ -31,6 +31,28 @@ export const getUserById = async (id) => {
 export const logoutUser = async () => {};
 export const deleteUser = async () => {};
 
+export const getRecentSearches = async (id) => {
+  const response = await http.get(`/users/${id}`);
+
+  return response.data.pesquisasRecentes;
+};
+
+export const saveRecentSearch = async (id, term) => {
+  const response = await http.get(`/users/${id}`);
+
+  const searches = response.data.pesquisasRecentes || [];
+
+  const updated = [term, ...searches.filter((item) => item !== term)].slice(
+    0,
+    5,
+  );
+
+  await http.patch(`/users/${id}`, {
+    pesquisasRecentes: updated,
+  });
+
+  return updated;
+};
 export const addToCart = async () => {};
 export const remoceFromCart = async () => {};
 

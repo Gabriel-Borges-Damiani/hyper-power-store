@@ -6,6 +6,7 @@ import { Login } from "../pages/Login";
 import { Menu } from "../pages/Menu";
 import { Products } from "../pages/Products";
 import { CategoryPage } from "../pages/CategoryPage";
+import { SearchPage } from "../pages/SearchPage";
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
           <Route path="menu" element={<Menu />}></Route>
           <Route path="product/:id" element={<Products />}></Route>
           <Route path="category/:category" element={<CategoryPage />}></Route>
+          <Route path="search" element={<SearchPage />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="register" element={<Register />}></Route>

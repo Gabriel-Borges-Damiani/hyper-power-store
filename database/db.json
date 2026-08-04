@@ -8,7 +8,14 @@
       "createDate": "2026-06-25T12:56:12.068Z",
       "favoritos": [],
       "carrinho": [],
-      "categoriasRecentes": []
+      "categoriasRecentes": [],
+      "pesquisasRecentes": [
+        "tes",
+        "teste",
+        "ipho",
+        "ip",
+        "iphon"
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

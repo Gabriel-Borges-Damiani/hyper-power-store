@@ -1,0 +1,29 @@
+.searchHeader {
+  max-width: 1400px;
+
+  margin: 40px 0;
+
+  padding-inline: var(--page-padding-margin);
+}
+
+.searchTitle {
+  margin: 0;
+
+  text-align: left;
+}
+
+.productsCount {
+  margin-top: 8px;
+}
+
+.noResults {
+  padding-inline: var(--page-padding-margin);
+
+  margin-top: 80px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  text-align: center;
+}

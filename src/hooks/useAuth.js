@@ -26,6 +26,7 @@ export const useAuth = () => {
 
       const newUser = createUser(data);
       const newUserToLocalStorage = {
+        id: newUser.id,
         name: newUser.name,
         email: newUser.email,
       };

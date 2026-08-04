@@ -1,4 +1,4 @@
-input {
+.input {
   flex: 1;
   height: 29px;
   border: none;
@@ -6,8 +6,41 @@ input {
   outline: none;
 }
 
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .searchIcon {
   background-color: #0097b2;
   border: none;
   cursor: pointer;
+  height: 100%;
+}
+
+.historyContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.historyItem {
+  width: 100%;
+  border: none;
+  background: white;
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.historyItem:hover {
+  background: #f2f2f2;
 }
