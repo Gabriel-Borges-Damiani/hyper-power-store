@@ -6,13 +6,19 @@ import { UserIcon } from "../UserIcon/index.jsx";
 import { SearchBar } from "../SearchBar/index.jsx";
 import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
+import { useFavorites } from "../../context/useFavorites";
 
 export const Header = () => {
+  const { favorites } = useFavorites();
+
   return (
     <header className={styles.header}>
       <img className={styles.topLogo} src={logo} alt="Blue Control logo" />
       <div className={styles.topIcons}>
-        <HearthIcon></HearthIcon>
+        <div>
+          <HearthIcon></HearthIcon>
+          {favorites.length > 0 && <span>{favorites.length}</span>}
+        </div>
         <CarIcon></CarIcon>
         <UserIcon></UserIcon>
       </div>

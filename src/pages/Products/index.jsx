@@ -2,6 +2,7 @@ import styles from "./products.module.css";
 import Typography from "../../components/Typography";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useFavorites } from "../../context/useFavorites";
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -11,6 +12,8 @@ const formatPrice = (price) => {
 };
 
 export const Products = () => {
+  const { toggleFavorite, isFavorite } = useFavorites();
+
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
@@ -78,10 +81,11 @@ export const Products = () => {
             </div>
 
             <button
+              onClick={() => toggleFavorite(product)}
               className={styles.heartIcon}
               title="Adicionar aos favoritos"
             >
-              ❤️
+              {isFavorite(product.id) ? "❤️" : "🤍"}
             </button>
           </div>
 
