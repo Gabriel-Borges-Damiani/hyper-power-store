@@ -15,9 +15,12 @@ export const Header = () => {
     <header className={styles.header}>
       <img className={styles.topLogo} src={logo} alt="Blue Control logo" />
       <div className={styles.topIcons}>
-        <div>
-          <HearthIcon></HearthIcon>
-          {favorites.length > 0 && <span>{favorites.length}</span>}
+        <div className={styles.favoriteIcon}>
+          <HearthIcon />
+
+          {favorites.length > 0 && (
+            <span className={styles.favoriteBadge}>{favorites.length}</span>
+          )}
         </div>
         <CarIcon></CarIcon>
         <UserIcon></UserIcon>
