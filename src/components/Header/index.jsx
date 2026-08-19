@@ -1,5 +1,6 @@
 import styles from "./header.module.css";
 import logo from "../../assets/logo-hyper-powerr.png";
+
 import { HearthIcon } from "../HearthIcon/index.jsx";
 import { CarIcon } from "../CarIcon/index.jsx";
 import { UserIcon } from "../UserIcon/index.jsx";
@@ -7,21 +8,39 @@ import { SearchBar } from "../SearchBar/index.jsx";
 import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
 import { useFavorites } from "../../context/useFavorites";
+import { useState } from "react";
+import { FavoritesSidebar } from "../FavoritesSidebar";
+
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { favorites } = useFavorites();
 
+  const navigate = useNavigate();
+
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
+
   return (
     <header className={styles.header}>
-      <img className={styles.topLogo} src={logo} alt="Blue Control logo" />
+      <button
+        className={styles.logoButton}
+        onClick={() => navigate("/menu")}
+        aria-label="Ir para o menu"
+      >
+        <img className={styles.topLogo} src={logo} alt="Blue Control logo" />
+      </button>
       <div className={styles.topIcons}>
-        <div className={styles.favoriteIcon}>
+        <button
+          className={styles.favoriteIcon}
+          onClick={() => setIsFavoritesOpen(true)}
+          aria-label="Abrir favoritos"
+        >
           <HearthIcon />
 
           {favorites.length > 0 && (
             <span className={styles.favoriteBadge}>{favorites.length}</span>
           )}
-        </div>
+        </button>
         <CarIcon></CarIcon>
         <UserIcon></UserIcon>
       </div>
@@ -33,6 +52,10 @@ export const Header = () => {
         <button className={styles.cepButton}>Digite seu CEP</button>
         <ArrowIcon></ArrowIcon>
       </div>
+      <FavoritesSidebar
+        isOpen={isFavoritesOpen}
+        onClose={() => setIsFavoritesOpen(false)}
+      />
     </header>
   );
 };

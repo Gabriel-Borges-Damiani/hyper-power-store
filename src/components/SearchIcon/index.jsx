@@ -1,6 +1,9 @@
+import styles from "./search.icon.module.css";
+
 export const SearchIcon = () => {
   return (
     <svg
+      className={styles.svgSearch}
       width="21px"
       height="21px"
       viewBox="0 0 24 24"

@@ -2,7 +2,7 @@ import styles from "./hearth.icon.module.css";
 
 export const HearthIcon = () => {
   return (
-    <button className={styles.hearthIcon}>
+    <div className={styles.hearthIcon}>
       <svg
         className={styles.svgHearth}
         width="20px"
@@ -25,6 +25,6 @@ export const HearthIcon = () => {
           ></path>{" "}
         </g>
       </svg>
-    </button>
+    </div>
   );
 };

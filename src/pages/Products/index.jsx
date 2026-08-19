@@ -1,6 +1,6 @@
 import styles from "./products.module.css";
 import Typography from "../../components/Typography";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../context/useFavorites";
 
@@ -16,7 +16,11 @@ export const Products = () => {
 
   const { id } = useParams();
 
+  const location = useLocation();
+
   const [product, setProduct] = useState(null);
+
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function loadProduct() {
@@ -29,6 +33,22 @@ export const Products = () => {
 
     loadProduct();
   }, [id]);
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => Math.max(1, prev - 1));
+  };
+
+  useEffect(() => {
+    const quantityFromSidebar = location.state?.quantity;
+
+    if (quantityFromSidebar) {
+      setQuantity(quantityFromSidebar);
+    }
+  }, [location.state]);
 
   if (!product) {
     return <p>Carregando...</p>;
@@ -71,13 +91,27 @@ export const Products = () => {
                 {product.title}
               </Typography>
 
-              <Typography
-                variant="h3"
-                color="--price-color"
-                className={styles.productPrice}
-              >
-                {formatPrice(product.price)}
-              </Typography>
+              <div className={styles.priceSection}>
+                <Typography
+                  variant="h3"
+                  color="--price-color"
+                  className={styles.productPrice}
+                >
+                  {formatPrice(product.price)}
+                </Typography>
+
+                <span className={styles.priceDescription}>
+                  Preço por unidade
+                </span>
+
+                <Typography
+                  variant="h3"
+                  color="--price-color"
+                  className={styles.totalPrice}
+                >
+                  Total: {formatPrice(product.price * quantity)}
+                </Typography>
+              </div>
             </div>
 
             <button
@@ -89,6 +123,29 @@ export const Products = () => {
             </button>
           </div>
 
+          <div className={styles.quantitySection}>
+            <span className={styles.quantityLabel}>Quantidade</span>
+
+            <div className={styles.quantityControl}>
+              <button
+                type="button"
+                onClick={decreaseQuantity}
+                aria-label="Diminuir quantidade"
+              >
+                −
+              </button>
+
+              <span>{quantity}</span>
+
+              <button
+                type="button"
+                onClick={increaseQuantity}
+                aria-label="Aumentar quantidade"
+              >
+                +
+              </button>
+            </div>
+          </div>
           <div className={styles.actionsButtons}>
             <button className={`${styles.btn} ${styles.btnCart}`}>
               <Typography color="--btn-cart-text" variant="body">
