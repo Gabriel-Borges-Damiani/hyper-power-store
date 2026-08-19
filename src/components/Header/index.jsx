@@ -10,6 +10,7 @@ import { ArrowIcon } from "../ArrowIcon/index.jsx";
 import { useFavorites } from "../../context/useFavorites";
 import { useState } from "react";
 import { FavoritesSidebar } from "../FavoritesSidebar";
+import { CartSidebar } from "../CartSidebar";
 
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +20,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   return (
     <header className={styles.header}>
       <button
@@ -41,7 +42,14 @@ export const Header = () => {
             <span className={styles.favoriteBadge}>{favorites.length}</span>
           )}
         </button>
-        <CarIcon></CarIcon>
+        <div
+          className={styles.cartIcon}
+          onClick={() => setIsCartOpen(true)}
+          role="button"
+          tabIndex={0}
+        >
+          <CarIcon />
+        </div>
         <UserIcon></UserIcon>
       </div>
       <div className={styles.middle}>
@@ -56,6 +64,7 @@ export const Header = () => {
         isOpen={isFavoritesOpen}
         onClose={() => setIsFavoritesOpen(false)}
       />
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 };

@@ -1,44 +1,21 @@
-import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import styles from "./favorites.sidebar.module.css";
 import { useFavorites } from "../../context/useFavorites";
+import { useQuantity } from "../../context/QuantityProvider";
 
 export const FavoritesSidebar = ({ isOpen, onClose }) => {
   const { favorites, toggleFavorite } = useFavorites();
   const navigate = useNavigate();
 
-  const [quantities, setQuantities] = useState({});
+  const { getQuantity, increaseQuantity, decreaseQuantity, setQuantity } =
+    useQuantity();
 
   if (!isOpen) {
     return null;
   }
 
-  const getQuantity = (productId) => {
-    return quantities[productId] || 1;
-  };
-
-  const handleQuantityChange = (productId, value) => {
-    const quantity = Math.max(1, Number(value) || 1);
-
-    setQuantities((prev) => ({
-      ...prev,
-      [productId]: quantity,
-    }));
-  };
-
   const handleBuy = (product) => {
-    const quantity = getQuantity(product.id);
-
-    console.log("INDO PARA:", `/product/${product.id}`);
-    console.log("QUANTIDADE:", quantity);
-
-    navigate(`/product/${product.id}`, {
-      state: {
-        quantity,
-      },
-    });
-
+    navigate(`/product/${product.id}`);
     onClose();
   };
 
@@ -101,12 +78,7 @@ export const FavoritesSidebar = ({ isOpen, onClose }) => {
                   <div className={styles.quantity}>
                     <button
                       type="button"
-                      onClick={() =>
-                        handleQuantityChange(
-                          product.id,
-                          getQuantity(product.id) - 1,
-                        )
-                      }
+                      onClick={() => decreaseQuantity(product.id)}
                       aria-label="Diminuir quantidade"
                     >
                       −
@@ -117,18 +89,13 @@ export const FavoritesSidebar = ({ isOpen, onClose }) => {
                       min="1"
                       value={getQuantity(product.id)}
                       onChange={(event) =>
-                        handleQuantityChange(product.id, event.target.value)
+                        setQuantity(product.id, event.target.value)
                       }
                     />
 
                     <button
                       type="button"
-                      onClick={() =>
-                        handleQuantityChange(
-                          product.id,
-                          getQuantity(product.id) + 1,
-                        )
-                      }
+                      onClick={() => increaseQuantity(product.id)}
                       aria-label="Aumentar quantidade"
                     >
                       +

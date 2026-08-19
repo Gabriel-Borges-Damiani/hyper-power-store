@@ -1,8 +1,10 @@
 import styles from "./products.module.css";
 import Typography from "../../components/Typography";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../context/useFavorites";
+import { useQuantity } from "../../context/QuantityProvider";
+import { useCart } from "../../context/CartProvider";
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -16,11 +18,11 @@ export const Products = () => {
 
   const { id } = useParams();
 
-  const location = useLocation();
-
   const [product, setProduct] = useState(null);
 
-  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
+  const { getQuantity, increaseQuantity, decreaseQuantity } = useQuantity();
 
   useEffect(() => {
     async function loadProduct() {
@@ -33,22 +35,6 @@ export const Products = () => {
 
     loadProduct();
   }, [id]);
-
-  const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
-  };
-
-  const decreaseQuantity = () => {
-    setQuantity((prev) => Math.max(1, prev - 1));
-  };
-
-  useEffect(() => {
-    const quantityFromSidebar = location.state?.quantity;
-
-    if (quantityFromSidebar) {
-      setQuantity(quantityFromSidebar);
-    }
-  }, [location.state]);
 
   if (!product) {
     return <p>Carregando...</p>;
@@ -109,7 +95,7 @@ export const Products = () => {
                   color="--price-color"
                   className={styles.totalPrice}
                 >
-                  Total: {formatPrice(product.price * quantity)}
+                  Total: {formatPrice(product.price * getQuantity(product.id))}
                 </Typography>
               </div>
             </div>
@@ -129,17 +115,17 @@ export const Products = () => {
             <div className={styles.quantityControl}>
               <button
                 type="button"
-                onClick={decreaseQuantity}
+                onClick={() => decreaseQuantity(product.id)}
                 aria-label="Diminuir quantidade"
               >
                 −
               </button>
 
-              <span>{quantity}</span>
+              <span>{getQuantity(product.id)}</span>
 
               <button
                 type="button"
-                onClick={increaseQuantity}
+                onClick={() => increaseQuantity(product.id)}
                 aria-label="Aumentar quantidade"
               >
                 +
@@ -147,7 +133,10 @@ export const Products = () => {
             </div>
           </div>
           <div className={styles.actionsButtons}>
-            <button className={`${styles.btn} ${styles.btnCart}`}>
+            <button
+              className={`${styles.btn} ${styles.btnCart}`}
+              onClick={() => addToCart(product)}
+            >
               <Typography color="--btn-cart-text" variant="body">
                 Adicionar ao carrinho
               </Typography>
