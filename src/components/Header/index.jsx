@@ -9,7 +9,7 @@ import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
 import { useFavorites } from "../../context/useFavorites";
 import { useState } from "react";
-import { FavoritesSidebar } from "../FavoritesSidebar";
+import { FavoritesSidebar } from "../FavoritesSideBar";
 import { CartSidebar } from "../CartSidebar";
 
 import { useNavigate } from "react-router-dom";
