@@ -1,0 +1,283 @@
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 60px;
+}
+
+.productContainer {
+  background-color: #ffffff !important;
+  border-radius: 12px;
+  padding: 56px 40px;
+
+  width: 100%;
+
+  margin-inline: var(--page-padding-margin);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+  display: grid;
+
+  grid-template-columns: minmax(300px, 500px) 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.productContainer div {
+  background-color: transparent !important;
+}
+
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 16px 18px;
+  background-color: #f7fafc;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.productPrice {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.priceDescription {
+  font-size: 13px;
+  color: #777777;
+  margin-top: -2px;
+}
+
+.totalPrice {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 10px 0 0;
+  padding-top: 10px;
+  width: 100%;
+  border-top: 1px solid #e1e5e8;
+}
+
+.gallerySection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.mainPhoto {
+  width: 100%;
+
+  aspect-ratio: 4 / 4.5;
+  background-color: var(--quinary-color) !important;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.thumbnailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.thumbPhoto {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--quinary-color) !important;
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.quantitySection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 24px;
+  margin-bottom: 28px;
+
+  padding: 14px 16px;
+
+  background-color: #ffffff;
+  border: 1px solid #e1e5e8;
+  border-radius: 10px;
+}
+
+.quantityLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+
+  height: 38px;
+
+  border: 1px solid #d5d9dc;
+  border-radius: 7px;
+
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.quantityControl button {
+  width: 38px;
+  height: 100%;
+
+  border: none;
+
+  background-color: #f5f7f8;
+
+  color: #222222;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.quantityControl button:hover {
+  background-color: #e8ecef;
+  color: var(--price-color);
+}
+
+.quantityControl span {
+  min-width: 42px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px solid #e1e5e8;
+  border-right: 1px solid #e1e5e8;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #333333;
+}
+
+.titleWrapper {
+  text-align: left;
+}
+
+.titleWrapper h2 {
+  text-align: left !important;
+  margin-bottom: 0;
+}
+
+.heartIcon {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+  padding: 0;
+}
+
+.actionsButtons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.btn {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Prompt", sans-serif;
+  font-weight: 600;
+  transition:
+    transform 0.1s ease,
+    filter 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btnCart {
+  background-color: var(--btn-cart-bg) !important;
+}
+
+.btnCart:hover {
+  filter: brightness(0.95);
+}
+
+.btnBuy {
+  background-color: var(--btn-buy-bg) !important;
+}
+
+.btnBuy:hover {
+  filter: brightness(0.9);
+}
+
+.btnBuy * {
+  color: #ffffff !important;
+}
+
+.miniDescription {
+  border-top: 1px solid var(--quinary-color);
+  padding-top: 24px;
+}
+
+.descriptionItem {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 850px) {
+  .productContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .productContainer {
+    padding: 16px;
+  }
+
+  .actionsButtons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .heartIcon {
+    font-size: 22px;
+  }
+}

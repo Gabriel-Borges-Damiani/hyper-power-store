@@ -1,0 +1,39 @@
+.h2 {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 150%;
+  margin: 0;
+  color: var(--typography-color);
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.h3 {
+  color: var(--typography-color);
+}
+
+.h4 {
+  color: var(--typography-color);
+}
+
+.body {
+  font-size: 12px;
+  color: var(--typography-color);
+  margin: 0;
+}
+
+.bold {
+  font-weight: 800;
+  color: var(--typography-color);
+}
+
+@media (min-width: 620px) {
+  .h2 {
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  .body {
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,8 @@
+.authContainer {
+  height: 100%;
+  overflow: hidden;
+}
+
+.authContainer h1 {
+  margin: 0px;
+}

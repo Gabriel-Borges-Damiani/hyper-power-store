@@ -1,3 +1,7 @@
+.svgUser:hover {
+  opacity: 0.9;
+}
+
 @media (min-width: 768px) {
   .svgUser {
     width: 30px;

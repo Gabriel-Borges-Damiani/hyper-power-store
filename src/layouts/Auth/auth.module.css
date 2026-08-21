@@ -1,0 +1,23 @@
+.body {
+  background-color: #274c57;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  background-color: var(--tertiary-color);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 550px;
+  aspect-ratio: 1 / 1.4;
+  padding: 25px 20px;
+}
+
+@media (min-width: 420px) {
+  .formContainer {
+    padding: 50px 40px;
+    aspect-ratio: 1 / 1.2;
+  }
+}

@@ -1,0 +1,36 @@
+a {
+  border: none;
+  cursor: pointer;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+.circleWrapper {
+  border-radius: 50%;
+  width: 17.5vw;
+  height: 17.5vw;
+  max-width: 260px;
+  max-height: 260px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.circleWrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .categoryItem {
+    gap: 5px;
+  }
+  .categoryItem h3 {
+    font-size: 8px;
+  }
+}

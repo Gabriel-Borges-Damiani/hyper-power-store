@@ -9,20 +9,20 @@ export const Footer = () => {
     <>
       <footer className={styles.footer}>
         <div>
-          <h4>Informações</h4>
+          <h3>Informações</h3>
           <p>Sobre nós</p>
           <p>Termos de Serviço</p>
           <p>Política de Privacidade</p>
           <p>Ajuda</p>
         </div>
         <div>
-          <h4>Contato</h4>
+          <h3>Contato</h3>
           <p>Email: hyperpower@loja.com</p>
           <p>Telefone: (11) 1233-2586</p>
         </div>
         <div>
-          <h4>Siga-nos</h4>
-          <div>
+          <h3>Siga-nos</h3>
+          <div className={styles.socialIcons}>
             <InstagramIcon></InstagramIcon>
             <TwitterIcon></TwitterIcon>
             <FacebookIcon></FacebookIcon>
@@ -30,7 +30,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.thanks}>
-          <h4>Obrigado pela preferência!</h4>
+          <h3>Obrigado pela preferência!</h3>
           <p>
             Estamos felizes por tê-lo como <br /> cliente!
           </p>

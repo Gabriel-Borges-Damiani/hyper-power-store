@@ -1,0 +1,45 @@
+.textCenter {
+  text-align: center;
+}
+
+.registerBtn {
+  margin-top: 7px;
+}
+
+.googleBtn {
+  margin-top: 7px;
+}
+
+.altOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.loginArea {
+  cursor: pointer;
+  border: none;
+  margin-top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.loginIcon {
+  width: 13px;
+  height: 13px;
+}
+
+@media (min-width: 768px) {
+  .loginArea {
+    gap: 8px;
+  }
+
+  .loginIcon {
+    width: 17px;
+    height: 17px;
+  }
+}
