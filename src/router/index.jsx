@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { MainLayout } from "../layouts/Main";
 import { AuthLayout } from "../layouts/Auth";
 import { Register } from "../pages/Register";
@@ -21,6 +21,7 @@ export const AppRouter = () => {
           <CartProvider>
             <Routes>
               <Route path="/" element={<MainLayout />}>
+                <Route index element={<Navigate to="/menu" replace />} />
                 <Route path="menu" element={<Menu />}></Route>
                 <Route path="product/:id" element={<Products />}></Route>
                 <Route

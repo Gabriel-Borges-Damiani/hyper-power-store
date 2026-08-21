@@ -1,6 +1,6 @@
 import styles from "./products.module.css";
 import Typography from "../../components/Typography";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../context/useFavorites";
 import { useQuantity } from "../../context/QuantityProvider";
@@ -15,14 +15,13 @@ const formatPrice = (price) => {
 
 export const Products = () => {
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { addToCart } = useCart();
+  const { getQuantity, increaseQuantity, decreaseQuantity } = useQuantity();
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
-
-  const { addToCart } = useCart();
-
-  const { getQuantity, increaseQuantity, decreaseQuantity } = useQuantity();
 
   useEffect(() => {
     async function loadProduct() {
@@ -142,7 +141,17 @@ export const Products = () => {
               </Typography>
             </button>
 
-            <button className={`${styles.btn} ${styles.btnBuy}`}>
+            <button
+              className={`${styles.btn} ${styles.btnBuy}`}
+              onClick={() =>
+                navigate("/checkout", {
+                  state: {
+                    product,
+                    quantity: getQuantity(product.id),
+                  },
+                })
+              }
+            >
               <Typography variant="body">Comprar agora</Typography>
             </button>
           </div>
