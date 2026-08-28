@@ -27,6 +27,7 @@
 }
 
 .topIcons {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -125,6 +126,144 @@
 
 .logoButton:hover {
   opacity: 0.9;
+}
+
+.userIcon {
+  position: relative;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userIcon:hover {
+  opacity: 0.7;
+}
+
+.userMenu {
+  position: absolute;
+
+  top: calc(100% + 14px);
+  right: 0;
+
+  width: 240px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  overflow: hidden;
+
+  z-index: 10000;
+
+  animation: userMenuAppear 0.18s ease;
+}
+
+.userMenuHeader {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 16px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.userMenuTitle {
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #222222;
+}
+
+.userMenuEmail {
+  font-size: 12px;
+
+  color: #777777;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutButton,
+.deleteButton {
+  width: 100%;
+
+  border: none;
+  background: transparent;
+
+  padding: 13px 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.logoutButton {
+  color: #333333;
+}
+
+.logoutButton:hover {
+  background: #f3f8fa;
+  color: #0097b2;
+}
+
+.deleteButton {
+  color: #d93636;
+
+  border-top: 1px solid #eeeeee;
+}
+
+.deleteButton:hover {
+  background: #fff2f2;
+  color: #c62828;
+}
+
+.logoutButton span,
+.deleteButton span {
+  width: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 17px;
+}
+
+@keyframes userMenuAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 768px) {

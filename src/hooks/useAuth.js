@@ -69,12 +69,19 @@ export const useAuth = () => {
       };
     }
   };
+
+  const logoutUser = () => {
+    localStorage.removeItem("auth_user");
+    setUser(null);
+  };
+
   const isAuthenticated = !!user;
 
   return {
     user,
     registerUser,
     loginUser,
+    logoutUser,
     isAuthenticated,
   };
 };

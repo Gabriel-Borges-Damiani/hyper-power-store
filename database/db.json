@@ -140,6 +140,15 @@
         "ip",
         "tes"
       ]
+    },
+    {
+      "id": "DE-Wfu2-0LM",
+      "name": "Claudevino pepino",
+      "email": "g.borges.damiani@uol.com.br",
+      "password": "jojot",
+      "createDate": "2026-08-28T20:38:32.783Z",
+      "favorites": [],
+      "cart": []
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

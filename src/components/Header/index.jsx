@@ -16,14 +16,19 @@ import { CartSidebar } from "../CartSidebar";
 import { useNavigate } from "react-router-dom";
 import { CartIcon } from "../CartIcon/index.jsx";
 
+import { useAuth } from "../../hooks/useAuth";
+
 export const Header = () => {
   const { favorites } = useFavorites();
 
   const { cartItems } = useCart();
   const navigate = useNavigate();
 
+  const { user, isAuthenticated, logoutUser, deleteUser } = useAuth();
+
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   return (
     <header className={styles.header}>
       <button
@@ -57,7 +62,64 @@ export const Header = () => {
             <span className={styles.cartBadge}>{cartItems.length}</span>
           )}
         </button>
-        <UserIcon></UserIcon>
+        <button
+          type="button"
+          className={styles.userIcon}
+          onClick={() => {
+            if (!isAuthenticated) {
+              navigate("/auth/login");
+              return;
+            }
+
+            setIsUserMenuOpen((prev) => !prev);
+          }}
+          aria-label={
+            isAuthenticated ? "Abrir opções da conta" : "Ir para login"
+          }
+        >
+          <UserIcon />
+        </button>
+        {isAuthenticated && isUserMenuOpen && (
+          <div className={styles.userMenu}>
+            <div className={styles.userMenuHeader}>
+              <span className={styles.userMenuTitle}>Minha conta</span>
+
+              <span className={styles.userMenuEmail}>{user?.email}</span>
+            </div>
+
+            <button
+              type="button"
+              className={styles.logoutButton}
+              onClick={() => {
+                logoutUser();
+                setIsUserMenuOpen(false);
+                navigate("/menu");
+              }}
+            >
+              <span>↪</span>
+              Sair da conta
+            </button>
+
+            <button
+              type="button"
+              className={styles.deleteButton}
+              onClick={async () => {
+                const confirmed = window.confirm(
+                  "Tem certeza que deseja excluir sua conta? Essa ação não poderá ser desfeita.",
+                );
+
+                if (!confirmed) return;
+
+                await deleteUser();
+                setIsUserMenuOpen(false);
+                navigate("/menu");
+              }}
+            >
+              <span>🗑</span>
+              Excluir conta
+            </button>
+          </div>
+        )}
       </div>
       <div className={styles.middle}>
         <SearchBar></SearchBar>

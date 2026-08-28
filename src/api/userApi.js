@@ -27,9 +27,6 @@ export const getUserById = async (id) => {
   return response.data;
 };
 
-export const logoutUser = async () => {};
-export const deleteUser = async () => {};
-
 export const getRecentSearches = async (id) => {
   const response = await http.get(`/users/${id}`);
 
