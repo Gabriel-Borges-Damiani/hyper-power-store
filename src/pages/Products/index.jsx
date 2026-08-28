@@ -47,6 +47,37 @@ export const Products = () => {
     `Avaliação: ${product.rating}`,
   ];
 
+  const handleAddToCart = async () => {
+    const user = localStorage.getItem("auth_user");
+
+    if (!user) {
+      navigate("/auth/login");
+      return;
+    }
+
+    await addToCart(product);
+  };
+
+  const handleBuyNow = () => {
+    const user = localStorage.getItem("auth_user");
+
+    if (!user) {
+      navigate("/auth/login");
+      return;
+    }
+
+    navigate("/checkout", {
+      state: {
+        items: [
+          {
+            product,
+            quantity: getQuantity(product.id),
+          },
+        ],
+      },
+    });
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.productContainer}>
@@ -134,7 +165,7 @@ export const Products = () => {
           <div className={styles.actionsButtons}>
             <button
               className={`${styles.btn} ${styles.btnCart}`}
-              onClick={() => addToCart(product)}
+              onClick={handleAddToCart}
             >
               <Typography color="--btn-cart-text" variant="body">
                 Adicionar ao carrinho
@@ -143,14 +174,7 @@ export const Products = () => {
 
             <button
               className={`${styles.btn} ${styles.btnBuy}`}
-              onClick={() =>
-                navigate("/checkout", {
-                  state: {
-                    product,
-                    quantity: getQuantity(product.id),
-                  },
-                })
-              }
+              onClick={handleBuyNow}
             >
               <Typography variant="body">Comprar agora</Typography>
             </button>

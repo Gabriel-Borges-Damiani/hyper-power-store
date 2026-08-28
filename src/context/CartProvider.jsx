@@ -1,24 +1,85 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
+import {
+  getCart,
+  addToCart as addToCartDB,
+  removeFromCart as removeFromCartDB,
+} from "../api/userApi";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
-    setCartItems((prev) => {
-      const alreadyExists = prev.some((item) => item.id === product.id);
+  const getLoggedUser = () => {
+    const authUser = localStorage.getItem("auth_user");
 
-      if (alreadyExists) {
-        return prev;
-      }
+    if (!authUser) {
+      return null;
+    }
 
-      return [...prev, product];
-    });
+    try {
+      return JSON.parse(authUser);
+    } catch {
+      return null;
+    }
   };
 
-  const removeFromCart = (productId) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== productId));
+  useEffect(() => {
+    const loadCart = async () => {
+      const user = getLoggedUser();
+
+      if (!user) {
+        setCartItems([]);
+        return;
+      }
+
+      try {
+        const cart = await getCart(user.id);
+
+        setCartItems(cart);
+      } catch (error) {
+        console.error("Erro ao carregar carrinho:", error);
+      }
+    };
+
+    loadCart();
+  }, []);
+
+  const addToCart = async (product) => {
+    const user = getLoggedUser();
+
+    if (!user) {
+      return false;
+    }
+
+    try {
+      const updatedCart = await addToCartDB(user.id, product);
+
+      setCartItems(updatedCart);
+
+      return true;
+    } catch (error) {
+      console.error("Erro ao adicionar ao carrinho:", error);
+
+      return false;
+    }
+  };
+
+  const removeFromCart = async (productId) => {
+    const user = getLoggedUser();
+
+    if (!user) {
+      return false;
+    }
+
+    try {
+      const updatedCart = await removeFromCartDB(user.id, productId);
+
+      setCartItems(updatedCart);
+    } catch (error) {
+      console.error("Erro ao remover do carrinho:", error);
+    }
   };
 
   const isInCart = (productId) => {

@@ -2,21 +2,24 @@ import styles from "./header.module.css";
 import logo from "../../assets/logo-hyper-powerr.png";
 
 import { HearthIcon } from "../HearthIcon/index.jsx";
-import { CarIcon } from "../CarIcon/index.jsx";
+
 import { UserIcon } from "../UserIcon/index.jsx";
 import { SearchBar } from "../SearchBar/index.jsx";
 import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
 import { useFavorites } from "../../context/useFavorites";
+import { useCart } from "../../context/CartProvider";
 import { useState } from "react";
 import { FavoritesSidebar } from "../FavoritesSidebar";
 import { CartSidebar } from "../CartSidebar";
 
 import { useNavigate } from "react-router-dom";
+import { CartIcon } from "../CartIcon/index.jsx";
 
 export const Header = () => {
   const { favorites } = useFavorites();
 
+  const { cartItems } = useCart();
   const navigate = useNavigate();
 
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
@@ -42,14 +45,18 @@ export const Header = () => {
             <span className={styles.favoriteBadge}>{favorites.length}</span>
           )}
         </button>
-        <div
+        <button
+          type="button"
           className={styles.cartIcon}
           onClick={() => setIsCartOpen(true)}
-          role="button"
-          tabIndex={0}
+          aria-label="Abrir carrinho"
         >
-          <CarIcon />
-        </div>
+          <CartIcon />
+
+          {cartItems.length > 0 && (
+            <span className={styles.cartBadge}>{cartItems.length}</span>
+          )}
+        </button>
         <UserIcon></UserIcon>
       </div>
       <div className={styles.middle}>

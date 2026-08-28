@@ -1,9 +1,9 @@
-.svgUser:hover {
+.svgCart:hover {
   opacity: 0.9;
 }
 
 @media (max-width: 768px) {
-  .svgUser {
+  .svgCard {
     width: 20px;
     height: 20px;
   }

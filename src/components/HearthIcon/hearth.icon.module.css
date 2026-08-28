@@ -1,10 +1,10 @@
-.hearthIcon {
-  border: none;
+.svgHearth:hover {
+  opacity: 0.9;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .svgHearth {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 }
