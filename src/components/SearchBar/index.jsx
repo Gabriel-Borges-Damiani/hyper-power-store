@@ -1,7 +1,7 @@
 import styles from "./search.module.css";
 
 import { SearchIcon } from "../SearchIcon";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { getRecentSearches, saveRecentSearch } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export const SearchBar = () => {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  const searchRef = useRef(null);
 
   const [search, setSearch] = useState("");
   const [history, setHistory] = useState([]);
@@ -49,8 +51,22 @@ export const SearchBar = () => {
     setShowHistory(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowHistory(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={styles.searchContainer}>
+    <div ref={searchRef} className={styles.searchContainer}>
       <input
         value={search}
         onChange={(e) => {

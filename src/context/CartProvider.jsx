@@ -36,14 +36,24 @@ export const CartProvider = ({ children }) => {
 
       try {
         const cart = await getCart(user.id);
-
         setCartItems(cart);
       } catch (error) {
         console.error("Erro ao carregar carrinho:", error);
+        setCartItems([]);
       }
     };
 
     loadCart();
+
+    const handleAuthChange = () => {
+      loadCart();
+    };
+
+    window.addEventListener("auth-changed", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("auth-changed", handleAuthChange);
+    };
   }, []);
 
   const addToCart = async (product) => {
@@ -86,12 +96,17 @@ export const CartProvider = ({ children }) => {
     return cartItems.some((item) => item.id === productId);
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         addToCart,
         removeFromCart,
+        clearCart,
         isInCart,
       }}
     >

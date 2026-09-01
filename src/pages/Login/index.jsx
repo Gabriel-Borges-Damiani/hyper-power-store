@@ -11,9 +11,12 @@ import { Button } from "../../components/Button";
 import { DividerLine } from "../../components/DividerLine";
 import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   const { register: registerLogin, handleSubmit: handleSubmitLogin } =
     useForm();
   const { loginUser } = useAuth();
@@ -25,13 +28,18 @@ export const Login = () => {
     setPasswordError("");
 
     const response = await loginUser(data);
+
     if (!response.success) {
       if (response.field === "password") {
         setPasswordError(response.error);
       } else {
         setEmailError(response.error);
       }
+
+      return;
     }
+
+    navigate("/menu");
   };
 
   return (

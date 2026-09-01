@@ -18,6 +18,13 @@ const categoryNames = {
   "mobile-accessories": "Acessórios de Celular",
 };
 
+const formatPrice = (price) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
+};
+
 export const Menu = () => {
   const navigate = useNavigate();
 
@@ -79,7 +86,7 @@ export const Menu = () => {
                 key={product.id}
                 id={product.id}
                 name={product.title}
-                price={product.price}
+                price={formatPrice(product.price)}
                 img={product.thumbnail}
               />
             ))}

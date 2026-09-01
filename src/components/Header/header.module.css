@@ -1,7 +1,7 @@
 .header {
   background-color: black;
   color: #0097b2;
-  width: 100vw;
+  width: 100%;
   height: 170px;
   padding-inline: var(--page-padding-margin);
   padding-block: 20px;
@@ -46,6 +46,7 @@
 }
 
 .bottom {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -263,6 +264,239 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.cepTrigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+.cepPopup {
+  position: absolute;
+
+  top: calc(100% + 12px);
+  left: 0;
+
+  width: 340px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+  z-index: 10000;
+}
+
+.cepPopup::before {
+  content: "";
+
+  position: absolute;
+
+  top: -7px;
+  left: 25px;
+
+  width: 12px;
+  height: 12px;
+
+  background: #ffffff;
+
+  border-left: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+
+  transform: rotate(45deg);
+}
+
+.cepPopupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.cepPopupHeader > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cepPopupHeader strong {
+  font-size: 17px;
+  color: #222222;
+}
+
+.cepPopupHeader span {
+  font-size: 12px;
+  color: #777777;
+}
+
+.closeCepButton {
+  border: none;
+  background: transparent;
+
+  font-size: 24px;
+  line-height: 1;
+
+  color: #777777;
+
+  cursor: pointer;
+}
+
+.closeCepButton:hover {
+  color: #222222;
+}
+
+.cepInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cepInputGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.cepInputRow {
+  display: flex;
+  gap: 8px;
+}
+
+.cepInputRow input {
+  flex: 1;
+  min-width: 0;
+
+  height: 40px;
+
+  padding: 0 11px;
+
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.cepInputRow input:focus {
+  border-color: #0097b2;
+}
+
+.cepInputRow button {
+  height: 40px;
+
+  padding: 0 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0097b2;
+  color: #ffffff;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.cepInputRow button:hover {
+  background: #00829a;
+}
+
+.cepInputRow button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cepError {
+  font-size: 12px;
+  color: #d93025;
+}
+
+.cepResult {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 16px;
+  padding: 12px;
+
+  background: #f5fafb;
+
+  border: 1px solid #dceff2;
+  border-radius: 10px;
+}
+
+.cepResultIcon {
+  font-size: 18px;
+}
+
+.cepResult > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cepResult strong {
+  font-size: 13px;
+  color: #222222;
+}
+
+.cepResult span {
+  font-size: 12px;
+  color: #666666;
+}
+
+.shippingResult {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-top: 12px;
+  padding-top: 14px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+.shippingResult > span {
+  font-size: 12px;
+  color: #666666;
+}
+
+.shippingResult strong {
+  font-size: 18px;
+  color: #0097b2;
+}
+
+.shippingResult small {
+  font-size: 11px;
+  color: #888888;
+}
+
+@media (max-width: 480px) {
+  .cepPopup {
+    width: calc(100vw - 30px);
+    max-width: 340px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .cepPopup::before {
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
   }
 }
 

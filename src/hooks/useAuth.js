@@ -55,6 +55,7 @@ export const useAuth = () => {
         };
         localStorage.setItem("auth_user", JSON.stringify(userLogged));
         setUser(userLogged);
+        notifyAuthChange();
 
         return { success: true, user: userLogged };
       } else {
@@ -70,9 +71,17 @@ export const useAuth = () => {
     }
   };
 
+  const notifyAuthChange = () => {
+    window.dispatchEvent(new Event("auth-changed"));
+  };
+
   const logoutUser = () => {
     localStorage.removeItem("auth_user");
     setUser(null);
+
+    notifyAuthChange();
+
+    return { success: true };
   };
 
   const isAuthenticated = !!user;
