@@ -4,6 +4,13 @@ const api = axios.create({
   baseURL: "https://dummyjson.com",
 });
 
+const allowedCategories = [
+  "smartphones",
+  "mobile-accessories",
+  "tablets",
+  "laptops",
+];
+
 export const getProduct = async (query) => {
   const { data } = await api(`/products/search?q=${query}`);
   return data.products;
@@ -28,5 +35,7 @@ export const getRandomProductsByCategory = async (category) => {
 export const getProductsBySearch = async (search) => {
   const response = await api.get(`/products/search?q=${search}`);
 
-  return response.data.products;
+  return response.data.products.filter((product) =>
+    allowedCategories.includes(product.category),
+  );
 };
