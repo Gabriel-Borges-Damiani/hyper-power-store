@@ -1,9 +1,16 @@
 import styles from "./menu.module.css";
-import { CategoryCircle } from "../../components/CategoryCircle";
+
+import hero1 from "./hero-hps-1.png";
+import hero2 from "./hero-hps-2.png";
+import hero3 from "./hero-hps-3.png";
+import hero4 from "./hero-hps-4.png";
+
 import smartphoneImg from "./smartphone-category.png";
 import tabletImg from "./tablet-category.png";
 import laptopImg from "./laptop-category.png";
 import accessoriesImg from "./accessories-category.png";
+
+import { CategoryCircle } from "../../components/CategoryCircle";
 import { useNavigate } from "react-router-dom";
 import { ProductsSection } from "../../components/ProductsSection";
 import { ItemCard } from "../../components/ItemCard";
@@ -18,6 +25,8 @@ const categoryNames = {
   "mobile-accessories": "Acessórios de Celular",
 };
 
+const heroImages = [hero1, hero2, hero3, hero4];
+
 const formatPrice = (price) => {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -29,6 +38,26 @@ export const Menu = () => {
   const navigate = useNavigate();
 
   const [productsSections, setProductsSections] = useState([]);
+
+  const [currentHero, setCurrentHero] = useState(0);
+
+  const nextHero = () => {
+    setCurrentHero((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const previousHero = () => {
+    setCurrentHero(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     async function loadProducts() {
@@ -51,7 +80,52 @@ export const Menu = () => {
 
   return (
     <>
-      <section className={styles.hero}></section>
+      <section className={styles.hero}>
+        <div className={styles.heroSlides}>
+          {heroImages.map((image, index) => (
+            <img
+              key={image}
+              src={image}
+              alt={`Banner ${index + 1} da Hyper Power Store`}
+              className={`${styles.heroImage} ${
+                index === currentHero ? styles.heroImageActive : ""
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={`${styles.heroArrow} ${styles.heroArrowLeft}`}
+          onClick={previousHero}
+          aria-label="Imagem anterior"
+        >
+          ‹
+        </button>
+
+        <button
+          type="button"
+          className={`${styles.heroArrow} ${styles.heroArrowRight}`}
+          onClick={nextHero}
+          aria-label="Próxima imagem"
+        >
+          ›
+        </button>
+
+        <div className={styles.heroDots}>
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`${styles.heroDot} ${
+                index === currentHero ? styles.heroDotActive : ""
+              }`}
+              onClick={() => setCurrentHero(index)}
+              aria-label={`Ir para imagem ${index + 1}`}
+            />
+          ))}
+        </div>
+      </section>
       <div className={styles.favoritesSection}>
         <CategoryCircle
           src={smartphoneImg}
