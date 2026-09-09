@@ -7,6 +7,7 @@ import { UserIcon } from "../UserIcon/index.jsx";
 import { SearchBar } from "../SearchBar/index.jsx";
 import { CepIcon } from "../CepIcon/index.jsx";
 import { ArrowIcon } from "../ArrowIcon/index.jsx";
+
 import { useFavorites } from "../../context/useFavorites";
 import { useCart } from "../../context/CartProvider";
 import { useState, useEffect, useRef } from "react";
