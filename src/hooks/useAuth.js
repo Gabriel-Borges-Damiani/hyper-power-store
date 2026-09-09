@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getAllUsers, getUserByEmail } from "../api/userApi";
+import axios from "axios";
 
 export const useAuth = () => {
   const [user, setUser] = useState(() => {
@@ -84,6 +85,35 @@ export const useAuth = () => {
     return { success: true };
   };
 
+  const deleteAccount = async () => {
+    try {
+      if (!user) {
+        return {
+          success: false,
+          error: "Usuário não encontrado.",
+        };
+      }
+
+      await axios.delete(`http://localhost:3001/users/${user.id}`);
+
+      localStorage.removeItem("auth_user");
+      setUser(null);
+
+      notifyAuthChange();
+
+      return {
+        success: true,
+      };
+    } catch (error) {
+      console.error("Erro ao excluir conta:", error);
+
+      return {
+        success: false,
+        error: "Não foi possível excluir sua conta.",
+      };
+    }
+  };
+
   const isAuthenticated = !!user;
 
   return {
@@ -91,6 +121,7 @@ export const useAuth = () => {
     registerUser,
     loginUser,
     logoutUser,
+    deleteAccount,
     isAuthenticated,
   };
 };

@@ -26,7 +26,8 @@ export const Header = () => {
   const { cartItems, clearCart } = useCart();
   const navigate = useNavigate();
 
-  const { user, isAuthenticated, logoutUser, deleteUser } = useAuth();
+  const { user, isAuthenticated, logoutUser, deleteUser, deleteAccount } =
+    useAuth();
 
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -185,8 +186,18 @@ export const Header = () => {
 
                 if (!confirmed) return;
 
-                await deleteUser();
+                const result = await deleteAccount();
+
+                if (!result.success) {
+                  alert(result.error);
+                  return;
+                }
+
+                clearFavorites();
+                clearCart();
+
                 setIsUserMenuOpen(false);
+
                 navigate("/menu");
               }}
             >
