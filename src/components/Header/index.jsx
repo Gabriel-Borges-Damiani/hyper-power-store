@@ -11,7 +11,7 @@ import { ArrowIcon } from "../ArrowIcon/index.jsx";
 import { useFavorites } from "../../context/useFavorites";
 import { useCart } from "../../context/CartProvider";
 import { useState, useEffect, useRef } from "react";
-import { FavoritesSidebar } from "../FavoritesSidebar";
+import { FavoritesSidebar } from "../FavoritesSideBar";
 import { CartSidebar } from "../CartSidebar";
 
 import { getAddressByCep } from "../../api-external/cepApi";
