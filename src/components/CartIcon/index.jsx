@@ -1,13 +1,12 @@
-import styles from "./card.icon.module.css";
-import { Link } from "react-router-dom";
+import styles from "./cart.icon.module.css";
 
-export const CarIcon = () => {
+export const CartIcon = () => {
   return (
-    <Link to="#">
+    <div className={styles.cartIcon}>
       <svg
         className={styles.svgCard}
-        width="20px"
-        height="20px"
+        width="30px"
+        height="30px"
         viewBox="0 -2.72 54.624 54.624"
         xmlns="http://www.w3.org/2000/svg"
         fill="#0097b2"
@@ -65,6 +64,6 @@ export const CarIcon = () => {
           </g>{" "}
         </g>
       </svg>
-    </Link>
+    </div>
   );
 };

@@ -26,7 +26,7 @@ export const ItemCard = ({ img, id, name, price }) => {
 
           <div className={styles.priceTag}>
             <Typography variant="bold" color="--price-color">
-              ${price}
+              {price}
             </Typography>
           </div>
         </div>

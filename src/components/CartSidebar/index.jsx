@@ -31,6 +31,13 @@ export const CartSidebar = ({ isOpen, onClose }) => {
   };
 
   const handleBuyOne = (product) => {
+    const user = localStorage.getItem("auth_user");
+
+    if (!user) {
+      onClose();
+      navigate("/auth/login");
+      return;
+    }
     navigate("/checkout", {
       state: {
         items: [
@@ -46,6 +53,13 @@ export const CartSidebar = ({ isOpen, onClose }) => {
   };
 
   const handleBuyAll = () => {
+    const user = localStorage.getItem("auth_user");
+
+    if (!user) {
+      onClose();
+      navigate("/auth/login");
+      return;
+    }
     const items = cartItems.map((product) => ({
       product,
       quantity: getQuantity(product.id),

@@ -27,9 +27,6 @@ export const getUserById = async (id) => {
   return response.data;
 };
 
-export const logoutUser = async () => {};
-export const deleteUser = async () => {};
-
 export const getRecentSearches = async (id) => {
   const response = await http.get(`/users/${id}`);
 
@@ -52,8 +49,46 @@ export const saveRecentSearch = async (id, term) => {
 
   return updated;
 };
-export const addToCart = async () => {};
-export const remoceFromCart = async () => {};
+
+export const addToCart = async (userId, product) => {
+  const response = await http.get(`/users/${userId}`);
+
+  const currentCart = response.data.cart || [];
+
+  const alreadyExists = currentCart.some((item) => item.id === product.id);
+
+  if (alreadyExists) {
+    return currentCart;
+  }
+
+  const updatedCart = [...currentCart, product];
+
+  await http.patch(`/users/${userId}`, {
+    cart: updatedCart,
+  });
+
+  return updatedCart;
+};
+
+export const removeFromCart = async (userId, productId) => {
+  const response = await http.get(`/users/${userId}`);
+
+  const currentCart = response.data.cart || [];
+
+  const updatedCart = currentCart.filter((item) => item.id !== productId);
+
+  await http.patch(`/users/${userId}`, {
+    cart: updatedCart,
+  });
+
+  return updatedCart;
+};
+
+export const getCart = async (userId) => {
+  const response = await http.get(`/users/${userId}`);
+
+  return response.data.cart || [];
+};
 
 export const addFavorite = async (userId, product) => {
   const response = await http.get(`/users/${userId}`);
@@ -94,6 +129,3 @@ export const getFavorites = async (userId) => {
 
   return response.data.favorites || [];
 };
-
-export const registerCategoryAccess = async () => {};
-export const getRecommendedCategory = async () => {};
